@@ -13,3 +13,5 @@ RUN python -m venv /py && \
   /py/bin/pip install -r /tmp/requirements.txt && \
   rm -rf /tmp && \
   python manage.py collectstatic --noinput
+
+VOLUME /django/static

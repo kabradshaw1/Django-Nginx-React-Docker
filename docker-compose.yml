@@ -17,7 +17,7 @@ services:
   depends_on:
     - db
   volumes:
-    - static-files:/django/staticfiles
+    - static-data:/django/static
 
   db:
     image: postgres:14-alpine
@@ -40,7 +40,9 @@ services:
     volumes:
       - ./nginx/nginx-setup.conf:/etc/nginx/conf.d/default.conf:ro
       - build-files:/usr/share/nginx/html
+      - static-data:/usr/share/nginx/static
 
 volumes:
   postgres-data:
   build-files:
+  static-data:

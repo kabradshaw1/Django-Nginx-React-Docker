@@ -1,7 +1,6 @@
 FROM python:3.11-alpine3.17
 
 ENV PYTHONUNBUFFERED 1
-COPY ./requirements.txt /tmp/requirements.txt
 COPY . .
 WORKDIR /django
 
@@ -10,8 +9,6 @@ RUN python -m venv /py && \
   apk add --update --no-cache postgresql-client jpeg-dev && \
   apk add --update --no-cache --virtual .tmp-build-deps \
       build-base postgresql-dev musl-dev zlib zlib-dev linux-headers && \
-  /py/bin/pip install -r /tmp/requirements.txt && \
-  rm -rf /tmp && \
-  python manage.py collectstatic --noinput
+  /py/bin/pip install -r /requirements.txt
 
-VOLUME /django/static
+VOLUME /backend/static

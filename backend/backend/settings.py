@@ -31,6 +31,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'test',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -115,15 +119,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = 'backend/static'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = []
-CORS_ALLOWED_ORIGINS.extend(
-    filter(
-        None,
-        os.environ.get('CORS_ALLOWED_ORIGINS', '').split(','),
-    )
-)
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = []
+# CORS_ALLOWED_ORIGINS.extend(
+#     filter(
+#         None,
+#         os.environ.get('CORS_ALLOWED_ORIGINS', '').split(','),
+#     )
+# )

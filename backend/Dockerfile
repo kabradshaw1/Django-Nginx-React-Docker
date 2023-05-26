@@ -1,5 +1,4 @@
 FROM python:3.11-alpine3.17
-LABEL maintainer="https://www.linkedin.com/in/kyle-bradshaw-15950988/"
 
 ENV PYTHONUNBUFFERED 1
 COPY ./requirements.txt /tmp/requirements.txt

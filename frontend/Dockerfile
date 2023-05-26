@@ -1,22 +1,5 @@
-FROM nginx:latest
+FROM nginx:1.21-alpine
 
-RUN mkdir -p /tmp/frontend
-WORKDIR /tmp/frontend
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get install -y nodejs
-
-COPY frontend ./
-
-RUN rm -rf build node_modules .env* *.log && \
-    npm install && \
-    npm run build && \
-    cd build && \
-    mv * /usr/share/nginx/html/ && \
-    cd /tmp && rm -rf frontend
-
-RUN apt remove -y nodejs && apt-get clean
-
-WORKDIR /usr/share/nginx/html/
-
+COPY frontend/build /usr/share/nginx/html
 COPY nginx.frontend.conf /etc/nginx/nginx.conf
 

@@ -16,11 +16,6 @@ services:
     - CORS_ALLOWED_ORIGIN=${CORS_ALLOWED_ORIGINS}
   depends_on:
     - db
-  frontend:
-    build:
-      context: ./frontend
-    volumes:
-      - react_build:/frontend/build
 
   db:
     image: postgres:14-alpine
@@ -38,7 +33,6 @@ services:
     restart: always
     depends_on:
       - backend
-      - frontend
     ports:
       - 80:8080
     volumes:

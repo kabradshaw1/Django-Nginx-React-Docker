@@ -12,7 +12,5 @@ RUN python -m venv /py && \
   apk add --update --no-cache --virtual .tmp-build-deps \
       build-base postgresql-dev musl-dev zlib zlib-dev linux-headers && \
   /py/bin/pip install -r /tmp/requirements.txt && \
-  rm -rf /tmp
-RUN python manage.py collectstatic --noinput && \
-  cd staticfiles && \
-  mv * /urs
+  rm -rf /tmp && \
+  python manage.py collectstatic --noinput

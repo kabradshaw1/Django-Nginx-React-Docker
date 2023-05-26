@@ -18,3 +18,4 @@ venv/
 
 # Local PostgreSQL data
 data/
+requirements.txt

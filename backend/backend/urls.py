@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from test.views import TestList
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('django/admin/', admin.site.urls),
+    path('api/test', TestList.as_view())
 ]

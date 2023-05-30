@@ -12,3 +12,4 @@ RUN python -m venv /py && \
   /py/bin/pip install -r /requirements.txt
 
 VOLUME /backend/static
+

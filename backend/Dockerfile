@@ -1,8 +1,9 @@
 FROM python:3.11-alpine3.17
 
 ENV PYTHONUNBUFFERED 1
-COPY . .
-WORKDIR /django
+COPY . /backend
+WORKDIR /backend
+EXPOSE 8000
 
 RUN python -m venv /py && \
   /py/bin/pip install --upgrade pip && \

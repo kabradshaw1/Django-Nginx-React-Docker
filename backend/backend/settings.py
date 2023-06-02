@@ -14,13 +14,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'changeme')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-ALLOWED_HOSTS.extend(
-    filter(
-        None,
-        os.environ.get('ALLOWED_HOSTS', '').split(','),
-    )
-)
+ALLOWED_HOSTS = ['127.0.0.1', 'ec2-52-91-48-17.compute-1.amazonaws.com']
+
 
 # Application definition
 
@@ -119,17 +114,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/backend/static'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = []
-# CORS_ALLOWED_ORIGINS.extend(
-#     filter(
-#         None,
-#         os.environ.get('CORS_ALLOWED_ORIGINS', '').split(','),
-#     )
-# )
+CORS_ALLOWED_ORIGINS = ['http://127.0.0.1', 'http://localhost:3000', 'http://ec2-52-91-48-17.compute-1.amazonaws.com']
